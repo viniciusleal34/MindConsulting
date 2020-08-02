@@ -3,8 +3,7 @@ import React,{useState} from 'react';
 import { StyleSheet,Text, KeyboardAvoidingView, Image, View, TouchableOpacity,FlatList} from 'react-native';
 
 
-export default function PerfilUser() {
-const [open,setOpen]=useState(false)
+export default function ListarUsuarios() {
 const [people, setPeople]= useState([
 {
   'name':'Vinicius Leal',
@@ -60,9 +59,9 @@ renderItem = ({ item }) => (
         />    
       <View style={styles.textProfile}>
       <Text style={styles.btnTitulo}>{item.name}</Text>
-  <Text style={styles.btnText}>cpf</Text>
-      <Text style={styles.btnemail}>Email: viniciusleal34@gmail.com</Text>
-      <Text style={styles.btnText}>Nivel de acesso: 1</Text>
+      <Text style={styles.btnText}>CPF: {item.cpf}</Text>
+      <Text style={styles.btnemail}>Email: {item.email}</Text>
+      <Text style={styles.btnText}>Nivel de acesso: {item.nivel}</Text>
       </View>
       </View>
 </View>
