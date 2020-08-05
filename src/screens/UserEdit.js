@@ -18,18 +18,22 @@ export default function EditarUsuarios({navigation}) {
   const [nivel, setNivel] = useState('')
   const [id, setId] = useState([])
   useEffect(() => {
-    (async () => {
-      const lista = JSON.parse(await AsyncStorage.getItem('@CodeApi:listar'))
-      const perfil = JSON.parse(await AsyncStorage.getItem('@CodeApi:perfil'))
-  
+    (async () => {   
+      const perfil = JSON.parse(await AsyncStorage.getItem('@CodeApi:user'))
       setProfile(perfil)
+      setName(perfil.name)
+      setCpf(perfil.cpf)
+      setEmail(perfil.email)
+      setNivel(perfil.nivel)
     })()
     
-  },[profile,name,password,nivel,cpf,email]);
+  },[]);
 
 
-async function Atualizar(){
-  
+async function Atualizar(){ 
+  if (nivel == 1 || nivel == 9999 || nivel ==0){
+
+  if(cpf && name && nivel && email && password ==" "){
         const response = await api.put('/users/'+profile._id,{
             "cpf":cpf,
             "name":name,
@@ -37,10 +41,22 @@ async function Atualizar(){
             'nivel':nivel
 
         }   )
- 
 
+}else if(cpf && name && nivel && email && password != " "){
+  const response = await api.put('/users/'+profile._id,{
+    "cpf":cpf,
+    "name":name,
+    'email':email,
+    'nivel':nivel,
+    'password':password
 
+}   )
 
+}
+}
+else{
+  Alert.alert("Esse Nivel não é permitido!")
+}
 }
 
 async function AtualizarLista(){
@@ -68,10 +84,11 @@ return (
         /> 
         </TouchableOpacity>
       <TextInput style={styles.input}placeholder="Nome Completo"  onChangeText={(value)=>(setName(value))}>{profile.name}</TextInput>
-      <TextInput style={styles.input}placeholder="CPF"  onChangeText={(value)=>(setCpf(value))}>{profile.cpf}</TextInput>
+      <TextInput style={styles.input} keyboardType="number-pad" placeholder="CPF"  onChangeText={(value)=>(setCpf(value))}>{profile.cpf}</TextInput>
       <TextInput style={styles.input} placeholder="E-Mail"  onChangeText={(value)=>(setEmail(value))}>{profile.email}</TextInput>
       <TextInput  style={styles.input} keyboardType="number-pad" placeholder="Nivel de Acesso" onChangeText={(value)=>(setNivel(value))}>{profile.nivel}</TextInput>
-      
+    
+ 
   <TouchableOpacity style={styles.btnSubmit} onPress={Atualizar}>
   <Text style={styles.btnText}>Salvar</Text>
 </TouchableOpacity>

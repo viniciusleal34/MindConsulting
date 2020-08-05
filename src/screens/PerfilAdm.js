@@ -64,7 +64,7 @@ export default function PerfilUser({navigation}) {
 <TouchableOpacity style={styles.btnSubmit} onPress={AtivarUser}>
   <Text style={styles.btnText}>Ativar/desativar usuário</Text>
 </TouchableOpacity>
-<TouchableOpacity style={styles.btnSubmit} onPress={()=>navigation.navigate('Home')}>
+<TouchableOpacity style={styles.btnSubmit} onPress={()=>navigation.navigate('Login')}>
   <Text style={styles.btnText} >Sair</Text>
 </TouchableOpacity>
     </View>

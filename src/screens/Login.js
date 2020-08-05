@@ -10,6 +10,7 @@ export default function Login({navigation}) {
 
   async function signIn(){
     try{
+      
     const response = await api.post('/auth/authenticated',{
       email:email,
       password:password,

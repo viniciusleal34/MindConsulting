@@ -32,7 +32,7 @@ useEffect(() => {
   <Text style={styles.btnText}>Visualizar Perfil</Text>
 </TouchableOpacity>
 
-<TouchableOpacity style={styles.btnSubmit}>
+<TouchableOpacity style={styles.btnSubmit}onPress={()=>{navigation.navigate('UserEdit')}}>
   <Text style={styles.btnText}>Editar Perfil</Text>
 </TouchableOpacity>
 <TouchableOpacity style={styles.btnSubmit}onPress={()=>{navigation.navigate('Login')}}>

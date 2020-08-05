@@ -47,9 +47,11 @@ return (
       <TextInput editable={false} style={styles.input}placeholder="Nome Completo" >{profile.name}</TextInput>
       <TextInput editable={false} style={styles.input}placeholder="CPF" >{profile.cpf}</TextInput>
       <TextInput editable={false} style={styles.input} placeholder="E-Mail">{profile.email}</TextInput>
-      <TextInput editable={false} style={styles.input} keyboardType="number-pad" placeholder="Nivel de Acesso" >{profile.nivel}</TextInput>
+      <TextInput editable={false} style={styles.input}placeholder="Nivel de Acesso" >{profile.nivel}</TextInput>
  
-
+      <TouchableOpacity style={styles.btnSubmit} onPress={()=>{navigation.navigate('Home')}}>
+  <Text style={styles.btnText}>Voltar</Text>
+</TouchableOpacity>
 
       </View>
       </View>
@@ -150,7 +152,7 @@ const styles = StyleSheet.create({
 
   },
   input:{
-    backgroundColor:'#fff',
+    backgroundColor:'#a0a0a0',
     width:'90%',
     marginBottom:15,
     color:'#222',
@@ -167,5 +169,9 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     borderRadius:5,
     margin: 5,
+  },
+  btnText:{
+    color:'#fff',
+    fontSize:13,
   },
 });

@@ -10,6 +10,7 @@ import Ativar from "./screens/AtivarUser"
 import EditarUsers from "./screens/EditarUser"
 import EditarOneUser from "./screens/EditarUsuario"
 import User from "./screens/UserProfile"
+import UserEdit from "./screens/EditarUser"
 const MainNavigator = createStackNavigator(
  {
    Login:{
@@ -39,6 +40,9 @@ const MainNavigator = createStackNavigator(
   User:{
       screen: User,
       },
+  UserEdit:{
+        screen: UserEdit,
+        },
 },{
     defaultNavigationOptions: {
       headerStyle: {

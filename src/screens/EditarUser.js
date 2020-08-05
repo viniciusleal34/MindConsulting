@@ -21,7 +21,7 @@ const[open,setOpen] = useState(false)
       setProfile(perfil)
     })()
     
-  },[]);
+  },[profile]);
 
  
 renderItem = ({ item }) => (
