@@ -46,7 +46,6 @@ Para inserir usuario administrador é necessario fazer isso de forma manual
 ## Bugs a corrigir
 
 - Essa versão possui alguns erros, como a na inserção de imagem
-- Login apenas utilizando o email, não possui a validação de CPF
 - Update não implementado completamente
 
 ## Autores
