@@ -1,9 +1,9 @@
 # Mind Login
 
-É um projeto desenvolvido com o intuito de conseguir filtrar usuários em sua plataforma, utilizando autenticações, e CRUD, com integra com o banco de dados mongo
-O Aonde o administrador do sistema será capaz de restaurar senha de usuarios, desativar ou ativar usuários que por algum motivo deixaram de utilizar a plataforma.
-
-## Getting Started
+É um projeto desenvolvido com o intuito de conseguir filtrar usuários em sua plataforma, utilizando autenticações, e CRUD, com integração do banco de dados mongo.
+O administrador do sistema será capaz de editar qualquer usuário, desativar ou ativar o usuário da plataforma.
+O usuário é capaz de alterar suas informações e visualizar a mesma.
+## Começando
 
 Para executarmos o projeto é necessario que tenhamos configurado e instalando o backend da aplicação
 
@@ -31,9 +31,9 @@ $ yarn start
 
 ### Configuração
 
-1º - Precisamos baixar o Backend 
-2º - Iniciar o servidor para inciarmos os testes
-3º - Aponta o localhost para o ip do seu computador, para que não ocorra erros nas query
+- Precisamos baixar o Backend 
+- Iniciar o servidor para inciarmos os testes
+- Aponta o localhost para o ip do seu computador, para que não ocorra erros nas query
 
 
 ## Testes
