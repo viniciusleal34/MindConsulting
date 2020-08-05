@@ -38,7 +38,8 @@ $ yarn start
 
 ## Testes
 
-Faça um cadastro na apliacação, ou insira manualmente no banco de dados
+Faça um cadastro na apliacação, ou insira manualmente no banco de dados a informações de um usuário
+Para inserir usuario administrador é necessario fazer isso de forma manual
 
 [Backend](https://github.com/viniciusleal34/backend/)
 
