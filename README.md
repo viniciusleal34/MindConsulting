@@ -54,7 +54,8 @@ $ yarn start
 * **Vinicius Leal**
 
 ## Licença
-    -None
+ 
+ -Nenhuma
 
 ## Agradecimentos
 
