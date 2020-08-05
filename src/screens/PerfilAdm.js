@@ -1,35 +1,71 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet,Text, KeyboardAvoidingView, Image, View, TouchableOpacity} from 'react-native';
+import React,{useEffect, useState} from 'react';
+import { StyleSheet,Text, KeyboardAvoidingView, Image, View, TouchableOpacity,AsyncStorage} from 'react-native';
+import api from '../services/api'
 
+export default function PerfilUser({navigation}) {
+  const [user, setUser] = useState('')
 
-export default function PerfilUser() {
+  useEffect(() => {
+      (async () => {
+        const token = await AsyncStorage.getItem('@CodeApi:token');
+        const user = JSON.parse(await AsyncStorage.getItem('@CodeApi:user'))
+        setUser(user)
+      })()
+      
+    });
 
+    async function Listar(){
+      const response = await api.get('/users/todos')
+      const usuarios = response.data.user
+      await AsyncStorage.multiSet([
+        ['@CodeApi:listar', JSON.stringify(usuarios)],
+      ])
+      navigation.navigate('Listar')
+    }
+    
+    async function AtivarUser(){
+      const response = await api.get('/users/todos')
+      const usuarios = response.data.user
+      await AsyncStorage.multiSet([
+        ['@CodeApi:listar', JSON.stringify(usuarios)],
+      ])
+      navigation.navigate('Ativar')
+    }
+
+    async function EditaUser(){
+      const response = await api.get('/users/todos')
+      const usuarios = response.data.user
+      await AsyncStorage.multiSet([
+        ['@CodeApi:listar', JSON.stringify(usuarios)],
+      ])
+      navigation.navigate('EditarUsers')
+    }
   return (
     <KeyboardAvoidingView style={styles.background}>
-      <View style={styles.containerProfile}>
+    <View style={styles.containerProfile}>
       <Image
         style={styles.logo}
-        source={require('./assets/profile.jpg') }
+        source={require('../../assets/profile.jpg') }
         />    
       <View style={styles.textProfile}>
-      <Text style={styles.btnText}>Vinicius Leal</Text>
-      <Text style={styles.btnText}>Nivel de acesso: 999</Text>
+      <Text style={styles.btnText}>{user.name}</Text>
+      <Text style={styles.btnText}>Nivel de acesso: {user.nivel}</Text>
       </View>
       </View>
-    <View style={styles.container}>
-    <TouchableOpacity style={styles.btnSubmit}>
+    <View style={styles.container} >
+    <TouchableOpacity style={styles.btnSubmit} onPress={Listar}>
   <Text style={styles.btnText}>Listar todos os usuários</Text>
 </TouchableOpacity>
 
-<TouchableOpacity style={styles.btnSubmit}>
+<TouchableOpacity style={styles.btnSubmit} onPress={EditaUser}>
   <Text style={styles.btnText}>Editar um perfil</Text>
 </TouchableOpacity>
-<TouchableOpacity style={styles.btnSubmit}>
+<TouchableOpacity style={styles.btnSubmit} onPress={AtivarUser}>
   <Text style={styles.btnText}>Ativar/desativar usuário</Text>
 </TouchableOpacity>
-<TouchableOpacity style={styles.btnSubmit}>
-  <Text style={styles.btnText}>Sair</Text>
+<TouchableOpacity style={styles.btnSubmit} onPress={()=>navigation.navigate('Home')}>
+  <Text style={styles.btnText} >Sair</Text>
 </TouchableOpacity>
     </View>
     <StatusBar style="light" backgroundColor='black'/>

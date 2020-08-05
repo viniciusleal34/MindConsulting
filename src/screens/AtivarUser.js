@@ -1,23 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
 import React,{useEffect, useState} from 'react';
-import { StyleSheet,Text, KeyboardAvoidingView, Image, View, FlatList,AsyncStorage} from 'react-native';
+import { StyleSheet,Text, KeyboardAvoidingView, Image, View, FlatList,AsyncStorage, TouchableOpacity} from 'react-native';
 import api from '../services/api'
 
-export default function ListarUsuarios() {
+export default function Ativar() {
 const [people, setPeople]= useState([
   ]
   )
+  
   useEffect(() => {
     (async () => {
       const lista = JSON.parse(await AsyncStorage.getItem('@CodeApi:listar'))
-      
       setPeople(lista)
     })()
     
   });
 
+ 
+
 renderItem = ({ item }) => (
-  <View style={styles.btnLista}>
+    
+<TouchableOpacity onPress={()=>onOffUser(item)}>
+  <View style={[styles.text, item.nivel == 0 ? styles.btnListDesat : styles.btnLista]}>
     
     <View style={styles.containerProfile}>
       <Image
@@ -30,16 +34,43 @@ renderItem = ({ item }) => (
       <Text style={styles.btnemail}>Email: {item.email}</Text>
       <Text style={styles.btnText}>Nivel de acesso: {item.nivel}</Text>
       </View>
+     
       </View>
 </View>
+</TouchableOpacity>
 );
+
+
+async function onOffUser(item){
+    const id = item._id
+
+
+    if(item.nivel == 0){
+    const response = await api.put('/users/'+id,{
+        "nivel": 1
+    }   )
+ 
+   }else{
+    const response = await api.put('/users/'+id,{
+        "nivel": 0
+    }   )
+   }
+   const resp = await api.get('/users/todos')
+    const dado = resp.data.user
+
+    setPeople(dado)
+    await AsyncStorage.multiSet([
+        ['@CodeApi:listar', JSON.stringify(dado)],
+      ])
+ 
+}
 
   return (
     
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.containerListagem}>
      
-      <Text style={styles.btnTitle}>Listagem de Usuarios</Text>
+      <Text style={styles.btnTitle}>Ativando e Desativando Usuários</Text>
       </View>
       
     <View style={styles.container}>
@@ -99,6 +130,24 @@ const styles = StyleSheet.create({
     
     elevation: 5,
   },
+  btnListDesat:{
+    backgroundColor:'#111111',
+    width:'100%',
+    height:150,
+    alignItems:'center',
+    justifyContent:'center',
+    marginBottom:20,
+    borderRadius:10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    
+    elevation: 5,
+  },
   logo:{
     marginLeft:10,
     justifyContent:'flex-start',
@@ -135,7 +184,7 @@ const styles = StyleSheet.create({
   btnTitle:{
     marginTop:10,
     color:'#fff',
-    fontSize:25,
+    fontSize:20,
     fontWeight:'bold',
     alignSelf:'center'
   }

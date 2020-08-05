@@ -1,12 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, TextInput,Text, KeyboardAvoidingView, Image, View, TouchableOpacity, Button} from 'react-native';
+import { StyleSheet, TextInput,Text, KeyboardAvoidingView, Image, View, TouchableOpacity, Button, Alert} from 'react-native';
 import {ImagePicker, Permissions, Camera} from 'expo'
 import { useState, useEffect } from 'react';
+import api from '../services/api'
 
-export default function App() {
+export default function Register({navigation}) {
   const [image, setImage] = useState(null)
-  
+  const [cpf, setCpf] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] =useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState(null)
+
   async function selectPicture() {
       let { status } = await CAMERA_ROLL.requestPermissionsAsync();
       if (status !== 'granted') {
@@ -16,10 +22,25 @@ export default function App() {
         allowsEditing: true,
       });
       if (!cancelled) setImage(uri) }
-    
+async function RegisterUser(){
+  try{
+    const response = await api.post('/auth/register',{
+       name,
+       email,
+       cpf,
+      "nivel": 1,
+      password
+    }
+    )
+    navigation.navigate('Login')
+  }
+  catch(response){
+      setError(response.data.error)
+      Alert.alert(error)
+      navigation.navigate('Register')
+  }
+}
 
-    
- 
 
 
   return (
@@ -27,21 +48,21 @@ export default function App() {
       <View styles={styles.containerLogo} >
         <Image
         style={styles.logo}
-        source={require('./assets/logoMind.png') }
+        source={require('../../assets/logoMind.png') }
         />        
       </View>
     <View style={styles.container}>
     <TouchableOpacity>
     <Image
         style={styles.profile}
-        source={require('./assets/profile.jpg') }
+        source={require('../../assets/profile.jpg') }
         />     
 </TouchableOpacity>
     <TextInput
     style={styles.input}
     placeholder="Nome Completo"
     autoCorrect={false}
-    onChargeText={()=>{}}
+    onChangeText={(value)=>(setName(value))}
     >
 
     </TextInput>
@@ -50,7 +71,7 @@ export default function App() {
     placeholder="CPF"
     style={styles.input}
     autoCorrect={false}
-    onChargeText={()=>{}}
+    onChangeText={(value)=>(setCpf(value))}
     >
 
     </TextInput>
@@ -58,25 +79,25 @@ export default function App() {
     style={styles.input}
     placeholder="Email"
     autoCorrect={false}
-    onChargeText={()=>{}}
-    >
+    onChangeText={(value)=>(setEmail(value))}>
 
     </TextInput>
 
     <TextInput
+    secureTextEntry={true}
     placeholder="Senha"
     style={styles.input}
     autoCorrect={false}
-    onChargeText={()=>{}}
+    onChangeText={(value)=>(setPassword(value))}
     >
  
     </TextInput>
 
-<TouchableOpacity style={styles.btnSubmit}>
+<TouchableOpacity style={styles.btnSubmit} onPress={RegisterUser}>
   <Text style={styles.btnText}>Criar Conta</Text>
 </TouchableOpacity>
     </View>
-    <StatusBar style="light" backgroundColor='black'/>
+   
     </KeyboardAvoidingView>
   );
 }

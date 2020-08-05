@@ -1,31 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet,Text, KeyboardAvoidingView, Image, View, TouchableOpacity} from 'react-native';
+import React,{useEffect, useState} from 'react';
+import { StyleSheet,Text, KeyboardAvoidingView, Image, View, TouchableOpacity,AsyncStorage } from 'react-native';
 
 
-export default function PerfilUser() {
+export default function PerfilUser({navigation}) {
+ const [user, setUser] = useState('')
+
+useEffect(() => {
+    (async () => {
+      const token = await AsyncStorage.getItem('@CodeApi:token');
+      const user = JSON.parse(await AsyncStorage.getItem('@CodeApi:user'))
+      setUser(user)
+    })()
+    
+  });
 
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.containerProfile}>
       <Image
         style={styles.logo}
-        source={require('./assets/profile.jpg') }
+        source={require('../../assets/profile.jpg') }
         />    
       <View style={styles.textProfile}>
-      <Text style={styles.btnText}>Vinicius Leal</Text>
-      <Text style={styles.btnText}>Nivel de acesso: 1</Text>
+      <Text style={styles.btnText}>{user.name}</Text>
+      <Text style={styles.btnText}>Nivel de acesso: {user.nivel}</Text>
       </View>
       </View>
     <View style={styles.container}>
-    <TouchableOpacity style={styles.btnSubmit}>
+    <TouchableOpacity style={styles.btnSubmit} onPress={()=>{navigation.navigate('User')}}>
   <Text style={styles.btnText}>Visualizar Perfil</Text>
 </TouchableOpacity>
 
 <TouchableOpacity style={styles.btnSubmit}>
   <Text style={styles.btnText}>Editar Perfil</Text>
 </TouchableOpacity>
-<TouchableOpacity style={styles.btnSubmit}>
+<TouchableOpacity style={styles.btnSubmit}onPress={()=>{navigation.navigate('Login')}}>
   <Text style={styles.btnText}>Sair</Text>
 </TouchableOpacity>
     </View>
