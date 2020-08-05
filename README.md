@@ -7,7 +7,7 @@ O Aonde o administrador do sistema será capaz de restaurar senha de usuarios, d
 
 Para executarmos o projeto é necessario que tenhamos configurado e instalando o backend da aplicação
 
-### Prerequisites
+### Requisitos
 
  - Node
  - Yarn
