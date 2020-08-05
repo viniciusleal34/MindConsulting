@@ -46,6 +46,7 @@ Faça um cadastro na apliacação, ou insira manualmente no banco de dados
 
 - Essa versão possui alguns erros, como a na inserção de imagem
 - Login apenas utilizando o email, não possui a validação de CPF
+- Update não implementado completamente
 
 ## Autores
 
