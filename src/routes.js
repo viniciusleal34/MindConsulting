@@ -1,63 +1,64 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
-import Login from "./screens/Login";
-import Register from "./screens/Register";
-import Home from "./screens/PerfilUsuario";
-import Adm from "./screens/PerfilAdm";
-import Listar from "./screens/ListarUsuarios";
-import Ativar from "./screens/AtivarUser"
-import EditarUsers from "./screens/EditarUser"
-import EditarOneUser from "./screens/EditarUsuario"
-import User from "./screens/UserProfile"
-import UserEdit from "./screens/EditarUser"
+import Login from './screens/Login';
+import Register from './screens/Register';
+import Home from './screens/PerfilUsuario';
+import Adm from './screens/PerfilAdm';
+import Listar from './screens/ListarUsuarios';
+import Ativar from './screens/AtivarUser';
+import EditarUsers from './screens/EditarUser';
+import EditarOneUser from './screens/EditarUsuario';
+import User from './screens/UserProfile';
+import UserEdit from './screens/UserEdit';
 const MainNavigator = createStackNavigator(
- {
-   Login:{
-    screen: Login,
-  },
-  Register:{
-    screen:Register
-  },
-  Home:{
-    screen:Home
-  },
-  Adm:{
-    screen:Adm
-  },
-  Listar:{
-    screen:Listar
-  },
-  Ativar:{
-    screen:Ativar
-  },
-  EditarUsers:{
-    screen:EditarUsers
-  },
-  EditarOneUser:{
-    screen: EditarOneUser,
+  {
+    Login: {
+      screen: Login,
     },
-  User:{
+    Register: {
+      screen: Register,
+    },
+    Home: {
+      screen: Home,
+    },
+    Adm: {
+      screen: Adm,
+    },
+    Listar: {
+      screen: Listar,
+    },
+    Ativar: {
+      screen: Ativar,
+    },
+    EditarUsers: {
+      screen: EditarUsers,
+    },
+    EditarOneUser: {
+      screen: EditarOneUser,
+    },
+    User: {
       screen: User,
-      },
-  UserEdit:{
-        screen: UserEdit,
-        },
-},{
+    },
+    UserEdit: {
+      screen: UserEdit,
+    },
+  },
+  {
     defaultNavigationOptions: {
       headerStyle: {
         elevation: 0,
-        shadowOpacity: 0
+        shadowOpacity: 0,
       },
-    header:null,
-      
-      headerTintColor: "#ca375e",
+      header: null,
+
+      headerTintColor: '#ca375e',
       headerTitleStyle: {
-        fontWeight: "bold",
-        color: "#161616"
-      }
-    }
-  }
+        fontWeight: 'bold',
+        color: '#161616',
+      },
+    },
+  },
 );
 
 const Routes = createAppContainer(MainNavigator); // For setting Navigation Stack
