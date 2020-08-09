@@ -46,8 +46,7 @@ $ yarn start
 
 ## Bugs a corrigir
 
-- Essa versão possui alguns erros, como a na inserção de imagem
-- Update não implementado completamente
+- [ERROR] Atualização de imagem, tela de usuario
 
 ## Autores
 
