@@ -52,7 +52,7 @@ export default function Ativar() {
   return (
     <KeyboardAvoidingView style={styles.background}>
       <View style={styles.containerListagem}>
-        <Text style={styles.btnTitle}>Ativando e Desativando Usuários</Text>
+        <Text style={styles.btnTitle}>Listagem De Todos os usuários</Text>
       </View>
 
       <View style={styles.container}>
@@ -64,7 +64,6 @@ export default function Ativar() {
           renderItem={renderItem}
         />
       </View>
-
       <StatusBar style="light" backgroundColor="black" />
     </KeyboardAvoidingView>
   );

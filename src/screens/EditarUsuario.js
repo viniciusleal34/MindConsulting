@@ -183,55 +183,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#F95F62',
   },
-  containerListagem: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    backgroundColor: '#343F4B',
-  },
-  container: {
-    flex: 5,
-    alignItems: 'center',
-    width: '100%',
-    backgroundColor: '#F95F62',
-  },
-  btnLista: {
-    backgroundColor: '#343F4B',
-    width: '100%',
-    height: 150,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 20,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
 
-    elevation: 5,
-  },
-  btnListDesat: {
-    backgroundColor: '#111111',
-    width: '100%',
-    height: 150,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 20,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
-  },
   logo: {
     margin: 20,
     marginBottom: 40,
@@ -244,36 +196,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 13,
   },
-  textProfile: {
-    margin: 20,
-    flex: 1,
-    flexDirection: 'column',
-  },
-  containerProfile: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    width: '90%',
-  },
-  btnTitulo: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  btnemail: {
-    color: '#fff',
-    fontSize: 11,
-  },
-  btnTitle: {
-    marginTop: 10,
-    color: '#fff',
-    fontSize: 20,
-    fontWeight: 'bold',
-    alignSelf: 'center',
-  },
-
   modelbody: {
     flex: 1,
     paddingTop: 40,

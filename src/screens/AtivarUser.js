@@ -52,7 +52,6 @@ export default function Ativar() {
 
   async function onOffUser(item) {
     const id = item._id;
-
     if (item.nivel == 0) {
       const response = await api.put('/users/' + id, {
         nivel: 1,

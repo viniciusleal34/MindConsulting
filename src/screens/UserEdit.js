@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     height: 100,
     width: 100,
-    borderRadius: 100,
+    borderRadius: 5,
   },
   btnText: {
     color: '#fff',
