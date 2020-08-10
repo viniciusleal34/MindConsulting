@@ -46,7 +46,7 @@ $ yarn start
 
 ## Bugs a corrigir
 
-- [ERROR] Atualização de imagem, tela de usuario
+- [BUG] Atualização de imagem
 
 ## Autores
 
