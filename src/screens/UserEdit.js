@@ -83,20 +83,23 @@ export default function EditarUsuarios({navigation}) {
     if (cpfField.isValid()) {
       if (password === ' ') {
         const resp = await api.put('/users/' + profile._id, {
-          cpf,
+          "cpf":cpfField.getRawValue(),
           name,
           email,
         });
-        setProfile(resp.data.user);
+
       } else {
         const response = await api.put('/users/' + profile._id, {
-          cpf,
+          "cpf":cpfField.getRawValue(),
           name,
           email,
           password,
         });
-        setProfile(response.data.user);
+
       }
+      profile.name= name
+      profile.cpf = cpfField.getRawValue()
+      profile.email= email
       await AsyncStorage.multiSet([['@CodeApi:user', JSON.stringify(profile)]]);
       Alert.alert('Alterado com sucesso!');
       navigation.navigate('Home');

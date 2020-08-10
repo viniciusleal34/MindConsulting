@@ -80,21 +80,21 @@ export default function EditarUsuarios({navigation}) {
     if (cpfField.isValid()) {
       if (password === ' ') {
         const response = await api.put('/users/' + profile._id, {
-          cpf,
+          "cpf":cpfField.getRawValue(),
           name,
           email,
           nivel,
         });
       } else {
         const response = await api.put('/users/' + profile._id, {
-          cpf,
+          "cpf":cpfField.getRawValue(),
           name,
           email,
           nivel,
           password,
         });
-        Alert.alert('Alterado com sucesso!');
       }
+      Alert.alert('Alterado com sucesso!');
     } else {
       Alert.alert('CPF Invalido!');
     }
