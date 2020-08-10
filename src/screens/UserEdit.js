@@ -80,12 +80,19 @@ export default function EditarUsuarios({navigation}) {
   }
 
   async function Atualizar() {
+    const url = await firebase
+      .storage()
+      .ref()
+      .child('users/' + cpfField.getRawValue() + '.jpg')
+      .getDownloadURL();
+    setUrl(url)
     if (cpfField.isValid()) {
       if (password === ' ') {
         const resp = await api.put('/users/' + profile._id, {
           "cpf":cpfField.getRawValue(),
           name,
           email,
+          url
         });
 
       } else {
@@ -94,12 +101,14 @@ export default function EditarUsuarios({navigation}) {
           name,
           email,
           password,
+          url
         });
 
       }
       profile.name= name
       profile.cpf = cpfField.getRawValue()
       profile.email= email
+      profile.url = url
       await AsyncStorage.multiSet([['@CodeApi:user', JSON.stringify(profile)]]);
       Alert.alert('Alterado com sucesso!');
       navigation.navigate('Home');

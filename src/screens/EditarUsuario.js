@@ -77,6 +77,12 @@ export default function EditarUsuarios({navigation}) {
   }
 
   async function Atualizar() {
+    const url = await firebase
+      .storage()
+      .ref()
+      .child('users/' + cpfField.getRawValue() + '.jpg')
+      .getDownloadURL();
+    setUrl(url)
     if (cpfField.isValid()) {
       if (password === ' ') {
         const response = await api.put('/users/' + profile._id, {
@@ -84,6 +90,7 @@ export default function EditarUsuarios({navigation}) {
           name,
           email,
           nivel,
+          url
         });
       } else {
         const response = await api.put('/users/' + profile._id, {
@@ -92,6 +99,7 @@ export default function EditarUsuarios({navigation}) {
           email,
           nivel,
           password,
+          url
         });
       }
       Alert.alert('Alterado com sucesso!');
