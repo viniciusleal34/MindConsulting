@@ -26,6 +26,7 @@ export default function Login({navigation}) {
   });
 
   async function signIn() {
+
     try {
       const response = await api.post('/auth/authenticated', {
         email: email,
@@ -44,7 +45,7 @@ export default function Login({navigation}) {
         Alert.alert('Usuário desativado!');
       }
     } catch (err) {
-      Alert.alert('Confira seu E-mail e Senha, e tente novamente!');
+      Alert.alert('Usuário desativado ou seu E-mail e Senha está incorreto');
     }
   }
 
@@ -67,11 +68,9 @@ export default function Login({navigation}) {
           autoCorrect={false}
           onChangeText={(value) => setPassword(value)}
         />
-
         <TouchableOpacity style={styles.btnSubmit} onPress={signIn}>
           <Text style={styles.btnText}>Acessar</Text>
         </TouchableOpacity>
-
         <TouchableOpacity
           style={styles.btnRegister}
           onPress={() => navigation.navigate('Register')}>
