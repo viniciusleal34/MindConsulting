@@ -10,7 +10,7 @@
   "dependencies": {
     "@react-navigation/stack": "^5.8.0",
     "apisauce": "^1.1.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "expo": "~38.0.8",
     "expo-constants": "~9.1.1",
     "expo-image-picker": "^8.4.0",
